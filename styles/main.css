@@ -16,53 +16,126 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+    display: block;
 }
 body {
-	line-height: 1;
+    line-height: 1;
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+    content: '';
+    content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 body {
-	font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 
 .container {
-	max-width: 720px;
-	margin: 0 auto;
+    max-width: 720px;
+    margin: 0 auto;
 }
 
 #tv {
-	width: 100%;
-	height: 100vh;
-	background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+
+.timer{
+    border: 6px solid #fff;
+    border-radius: 100%;
+    width: 64px;
+    height: 64px;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    opacity: .75;
+}
+
+/* Timer is based on http://codepen.io/jshawl/pen/svyea */
+
+.timer:before,
+.timer:after{
+    content: '';
+    display: block;
+    position: absolute;
+}
+
+.hand {
+    background: #1BB287;
+    border: 16px solid #fff;
+    border-radius: 100%;
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -22px 0 0 -21px;
+}
+
+.hand:before, 
+.hand:after {
+    content: '';
+    display: block;
+    position: relative;
+}
+
+.hand:before {
+    background:#1BB287;
+    width: .325em;
+    height: 24px;
+    top: -24px;
+    left: 3px;
+
+    -webkit-animation: countdown 15s linear infinite;
+            animation: countdown 15s linear infinite;
+
+    -webkit-transform-origin: 50% 125%;    
+            transform-origin: 50% 125%;
+}
+
+@keyframes countdown {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes countdown {
+    0%{
+        transform: rotate(0deg);
+    }
+
+    100%{
+        transform: rotate(360deg);
+    }
 }

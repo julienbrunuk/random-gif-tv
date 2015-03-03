@@ -1,35 +1,24 @@
 (function () {
-	var endpoint = 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC';
-	var timeout = 15;
+    var key = 'dc6zaTOxFJmzC';
+    var endpoint = 'http://api.giphy.com/v1/gifs/random?api_key=' + key;
+    var timeout = 15;
 
-	function randomGif() {
-		var jqxhr = $.ajax(endpoint)
-			.done(function (response) {
-				console.log(response);
+    function randomGif() {
+        var jqxhr = $.ajax(endpoint)
+            .done(function (response) {
+                var img = response.data.image_original_url;
 
-				var img = response.data.image_original_url;
+                $('#tv').css({
+                    'background-image': 'url(' + img + ')'
+                });
 
-				$('#tv').css({
-					'background-image': 'url(' + img + ')'
-				});
+                setTimeout(randomGif, timeout * 1000);
+            })
+            .fail(function () {
+                location.reload();
+            });
+    }
 
-				setTimeout(randomGif, timeout * 1000);
-			})
-			.fail(function () {
-				console.log('error');
-			})
-			.always(function () {
-				console.log('complete');
-			});
-
-			// Perform other work here ...
-
-			// Set another completion function for the request above
-			jqxhr.always(function () {
-				console.log('second complete');
-			});
-	}
-
-	randomGif();
+    randomGif();
 
 })();
