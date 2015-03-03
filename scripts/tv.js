@@ -1,6 +1,6 @@
 (function () {
 	var endpoint = 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC';
-	var loaded = false;
+	var timeout = 15;
 
 	function randomGif() {
 		var jqxhr = $.ajax(endpoint)
@@ -13,7 +13,7 @@
 					'background-image': 'url(' + img + ')'
 				});
 
-				setTimeout(randomGif, 30 * 1000);
+				setTimeout(randomGif, timeout * 1000);
 			})
 			.fail(function () {
 				console.log('error');
