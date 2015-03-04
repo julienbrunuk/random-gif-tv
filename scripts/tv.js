@@ -13,7 +13,7 @@
 					'background-image': 'url(' + img + ')'
 				});
 
-				setTimeout(randomGif, 30 * 1000);
+				setTimeout(randomGif, 60 * 5 * 1000);
 			})
 			.fail(function () {
 				console.log('error');
